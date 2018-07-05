@@ -1,0 +1,68 @@
+<div class="container search-repos-container">
+    <div class="panel">
+        <div class="panel-head">
+            <h1 class="panel-heading">
+                List organization repositories
+            </h1>
+        </div>
+        <div class="panel-body">
+            <p class="">
+                Would you like to contribute more towards the Github community?
+            </p>
+            <p> Start by searching an organization you would like to contribute towards and you will be able to see a list of popular repositories
+                from that organization with the most open issues. Please feel free to visit the repository and contribute there directly.
+            </p>
+            <form class="repo-search-form">
+                <div class="form-group">
+                    <input name="orgName" autocomplete="false"
+                           type="text" placeholder="Search organization..." class="form-control" [(ngModel)]="orgName" (keydown)="onSubmit($event)">
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="panel" *ngIf="repos !== null">
+        <div class="panel-head">
+            <h1 class="panel-heading" *ngIf="repos && repos.length > 0">Found {{repos.length }} repositories under {{orgName}}</h1>
+
+        </div>
+        <div class="panel-body">
+            <div class="repo-tile-container" #repoTilesContainer *ngIf="repos && repos.length > 0">
+                <div *ngFor="let r of repos;" class="repo-tile-box">
+                    <div class="repo-tile repo-{{i}}">
+                        <div class="repo-tile-header-section">
+                            <div class="repo-status-section">
+                                <span class="id-tag public" *ngIf="r.private == false">Public</span>
+                                <span class="id-tag private" *ngIf="r.private == true">Private</span>
+                            </div>
+                        </div>
+                        <div class="repo-name-section">
+                            <span class="repo-name">{{r.name}}</span>
+                            <span class="repo-description" title="{{r.description}}">{{r.description}}</span>
+                        </div>
+                        <div class="repo-tile-footer-section">
+                            <div class="repo-tile-footer-text">
+                                <div class="repo-data">
+                                    <span class="repo-tile-footer-heading">Forks</span>
+                                    <span class="repo-tile-footer-value">{{r.forks_count}}</span>
+                                </div>
+                                <div class="repo-data">
+                                    <span class="repo-tile-footer-heading">Open issues</span>
+                                    <span class="repo-tile-footer-value" [ngClass]="{'high': r.open_issues_count > 50, 'medium': (r.open_issues_count > 10 && r.open_issues_count < 50), 'low': (r.open_issues_count < 10)}">{{r.open_issues_count}}</span>
+                                </div>
+                            </div>
+                            <div class="repo-tile-footer-buttons">
+                                <a class="btn btn-small btn-primary btn-contribute" href="{{r.html_url}}">Contribute</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="no-results-container" *ngIf="repos!==null && repos.length == 0">
+                <p>No results found</p>
+            </div>
+            <span class="loading"></span>
+        </div>
+    </div>
+
+</div>

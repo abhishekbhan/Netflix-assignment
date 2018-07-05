@@ -5,23 +5,31 @@ import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { CitiesComponent } from './cities/cities.component';
+import { SearchReposComponent} from './components/search-repos/search-repos.component';
+import {GithubApiService} from "./services/api.service";
+import {RepoService} from "./services/repo.service";
+import {OrderByPipe} from "./pipes/orderby.pipe";
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    CitiesComponent
+    SearchReposComponent
   ],
+  providers: [
+      GithubApiService,
+      RepoService,
+      OrderByPipe
+  ],
+  // exports: [OrderByPipe],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
     RouterModule.forRoot([
-      { path: '', redirectTo: 'cities', pathMatch: 'full' },
-      { path: 'cities', component: CitiesComponent }
+      { path: '', component: SearchReposComponent }
     ])
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

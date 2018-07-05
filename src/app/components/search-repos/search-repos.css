@@ -1,0 +1,211 @@
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.loading {
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    border: .25rem solid rgba(255,255,255, 0.2);
+    border-top-color: white;
+    animation: spin 750ms infinite linear;
+    margin-top: 20px;
+}
+
+.panel {
+    margin: 20px 0;
+    background-color: #fff;
+    border: 1px solid #d7d7d7;
+    border-radius: 4px;
+    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    box-shadow: 0 1px 1px rgba(0,0,0,.05);
+    padding: 20px;
+}
+
+.repo-tile-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    border-top: 1px solid #ececec;
+    margin: 20px 0 0 0;
+}
+
+.form-control {
+    width: 100%;
+    height: 36px;
+    border: 1px solid #d7d7d7;
+    padding: 8px 12px;
+    text-align: left;
+    border-radius: 0;
+    font-size: 14px;
+    color: #363636;
+    box-shadow: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    display: block;
+    background: #fff;
+
+}
+
+.form-control:focus {
+    border: 1px solid #199de0;
+    box-shadow: none;
+    outline: none;
+    background: none;
+}
+
+.repo-tile-box {
+    width: 25%;
+    margin: 0;
+    padding: 0;
+    border: none;
+    outline: none;
+}
+
+.repo-tile {
+    height: 250px;
+    /*border: none;*/
+    padding: 0;
+    margin: 0;
+    border: 1px solid #ececec;
+    border-top: none;
+    position: relative;
+    cursor: pointer;
+}
+
+
+.repo-tile-header-section{
+    display: flex;
+    padding: 16px 24px 5px;
+}
+
+.repo-id-section {
+    flex-grow: 1;
+    align-self: flex-start;
+}
+
+.id-tag {
+    font-size: 12px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: normal;
+    color: white;
+    padding: 3px 5px;
+    border-radius: 2px;
+}
+
+.id-tag.public {
+    background-color: #28a745;
+}
+.id-tag.private {
+    background-color: #f0ad4e;
+}
+
+.repo-name-section {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 24px;
+}
+
+.repo-name {
+    font-size: 18px;
+    font-weight: normal;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: 1.5;
+    letter-spacing: normal;
+    color: #000000;
+    display: block;
+    height: 54px;
+    overflow: hidden;
+}
+
+.repo-description {
+    font-size: 12px;
+    color: #363636;
+    display: block;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    word-break: break-all;
+    white-space: nowrap;
+}
+
+.repo-tile-footer-section {
+    display: flex;
+    background-color: #f7f8fa;
+    flex-wrap: nowrap;
+    position: absolute;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+}
+
+.repo-tile-footer-buttons {
+    display: none;
+    height: 80px;
+}
+
+.repo-tile-footer-buttons .btn-contribute {
+    font-size: 12px;
+}
+
+.repo-tile:hover .repo-tile-footer-section {
+    background-color: white;
+}
+
+.repo-tile:hover .repo-tile-footer-text {
+    display: none;
+}
+.repo-tile:hover .repo-tile-footer-buttons {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.repo-tile-footer-text {
+    display: flex;
+    padding: 15px 24px;
+    width: 100%;
+}
+
+.repo-data {
+    flex-grow: 1;
+}
+
+.repo-tile-footer-heading {
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.repo-tile-footer-value {
+    /*font-weight: bold;*/
+    font-weight: 100;
+}
+
+.repo-tile-footer-value.high {
+    color: #cc0000;
+}
+
+.repo-tile-footer-value.medium {
+    color: #f0ad4e;
+}
+
+.repo-tile-footer-value.low {
+    color: #038719;
+}
+
+.repo-tile-footer-heading, .repo-tile-footer-value {
+    font-size: 14px;
+    color: #363636;
+    display: block;
+}
